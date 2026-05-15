@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="fw-bold mb-4">Student Dashboard</h2>
+
+{% if not profile or profile.branch == 'Not Set' %}
+<div class="alert alert-warning">
+  Your profile is incomplete!
+  <a href="{{ url_for('student.profile') }}" class="alert-link">Complete your profile</a>
+  to apply for job drives.
+</div>
+{% endif %}
+
+<div class="row g-3 mb-4">
+  <div class="col-md-3">
+    <div class="card text-white bg-primary shadow-sm">
+      <div class="card-body text-center">
+        <h3 class="fw-bold">{{ stats.total_applied }}</h3>
+        <p class="mb-0">Applied</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card text-white bg-info shadow-sm">
+      <div class="card-body text-center">
+        <h3 class="fw-bold">{{ stats.shortlisted }}</h3>
+        <p class="mb-0">Shortlisted</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card text-white bg-warning shadow-sm">
+      <div class="card-body text-center">
+        <h3 class="fw-bold">{{ stats.interviews }}</h3>
+        <p class="mb-0">Interviews</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card text-white bg-success shadow-sm">
+      <div class="card-body text-center">
+        <h3 class="fw-bold">{{ stats.selected }}</h3>
+        <p class="mb-0">Selected</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row g-3">
+  <div class="col-md-4">
+    <div class="card shadow-sm h-100">
+      <div class="card-header fw-bold">My Profile</div>
+      <div class="card-body">
+        {% if profile %}
+        <p><strong>Roll No:</strong> {{ profile.roll_number }}</p>
+        <p><strong>Branch:</strong> {{ profile.branch }}</p>
+        <p><strong>CGPA:</strong> {{ profile.cgpa }}</p>
+        <p><strong>Backlogs:</strong> {{ profile.backlogs }}</p>
+        <p><strong>Phone:</strong> {{ profile.phone or '-' }}</p>
+        <p><strong>Status:</strong>
+          {% if profile.is_placed %}
+            <span class="badge bg-success">Placed</span>
+          {% else %}
+            <span class="badge bg-secondary">Not Placed</span>
+          {% endif %}
+        </p>
+        {% endif %}
+        <a href="{{ url_for('student.profile') }}" class="btn btn-outline-primary btn-sm">Edit Profile</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-8">
+    <div class="card shadow-sm">
+      <div class="card-header fw-bold d-flex justify-content-between">
+        Open Job Drives
+        <a href="{{ url_for('student.drives') }}" class="btn btn-sm btn-outline-primary">View All</a>
+      </div>
+      <div class="card-body p-0">
+        <table class="table table-hover mb-0">
+          <thead class="table-light">
+            <tr><th>Company</th><th>Role</th><th>Package</th><th>Deadline</th></tr>
+          </thead>
+          <tbody>
+            {% for d in open_drives %}
+            <tr>
+              <td>{{ d.company.company_name }}</td>
+              <td>{{ d.title }}</td>
+              <td>{{ d.package }} LPA</td>
+              <td>{{ d.apply_deadline.strftime('%d %b %Y') if d.apply_deadline else 'Open' }}</td>
+            </tr>
+            {% else %}
+            <tr><td colspan="4" class="text-center text-muted">No open drives</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card shadow-sm mt-3">
+      <div class="card-header fw-bold d-flex justify-content-between">
+        My Recent Applications
+        <a href="{{ url_for('student.my_applications') }}" class="btn btn-sm btn-outline-secondary">View All</a>
+      </div>
+      <div class="card-body p-0">
+        <table class="table table-hover mb-0">
+          <thead class="table-light">
+            <tr><th>Company</th><th>Role</th><th>Status</th></tr>
+          </thead>
+          <tbody>
+            {% for a in applications[:4] %}
+            <tr>
+              <td>{{ a.job_drive.company.company_name }}</td>
+              <td>{{ a.job_drive.title }}</td>
+              <td>
+                <span class="badge
+                  {% if a.status == 'selected' %}bg-success
+                  {% elif a.status == 'rejected' %}bg-danger
+                  {% elif a.status == 'shortlisted' %}bg-info
+                  {% elif a.status == 'interview' %}bg-primary
+                  {% else %}bg-secondary{% endif %}">
+                  {{ a.status }}
+                </span>
+              </td>
+            </tr>
+            {% else %}
+            <tr><td colspan="3" class="text-center text-muted">No applications yet</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <div class="card shadow-sm">
+      <div class="card-header fw-bold">Post a New Job Drive</div>
+      <div class="card-body">
+        <form method="POST">
+          {{ form.hidden_tag() }}
+          <div class="row">
+            <div class="col-md-8 mb-3">
+              {{ form.title.label(class="form-label") }}
+              {{ form.title(class="form-control", placeholder="e.g. Software Engineer") }}
+            </div>
+            <div class="col-md-4 mb-3">
+              {{ form.job_type.label(class="form-label") }}
+              {{ form.job_type(class="form-select") }}
+            </div>
+          </div>
+          <div class="mb-3">
+            {{ form.description.label(class="form-label") }}
+            {{ form.description(class="form-control", rows=4,
+               placeholder="Job responsibilities, requirements...") }}
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              {{ form.package.label(class="form-label") }}
+              {{ form.package(class="form-control", placeholder="e.g. 6.5") }}
+            </div>
+            <div class="col-md-6 mb-3">
+              {{ form.location.label(class="form-label") }}
+              {{ form.location(class="form-control", placeholder="e.g. Bangalore") }}
+            </div>
+          </div>
+          <hr/>
+          <h6 class="fw-bold mb-3">Eligibility Criteria</h6>
+          <div class="row">
+            <div class="col-md-4 mb-3">
+              {{ form.min_cgpa.label(class="form-label") }}
+              {{ form.min_cgpa(class="form-control", placeholder="e.g. 7.0") }}
+            </div>
+            <div class="col-md-4 mb-3">
+              {{ form.max_backlogs.label(class="form-label") }}
+              {{ form.max_backlogs(class="form-control", placeholder="e.g. 0") }}
+            </div>
+            <div class="col-md-4 mb-3">
+              {{ form.allowed_branches.label(class="form-label") }}
+              {{ form.allowed_branches(class="form-control", placeholder="CSE,IT,ECE") }}
+            </div>
+          </div>
+          <hr/>
+          <h6 class="fw-bold mb-3">Drive Schedule</h6>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              {{ form.apply_deadline.label(class="form-label") }}
+              {{ form.apply_deadline(class="form-control", placeholder="2025-12-31") }}
+            </div>
+            <div class="col-md-6 mb-3">
+              {{ form.drive_date.label(class="form-label") }}
+              {{ form.drive_date(class="form-control", placeholder="2026-01-15") }}
+            </div>
+          </div>
+          <div class="d-flex gap-2">
+            {{ form.submit(class="btn btn-success") }}
+            <a href="{{ url_for('company.my_drives') }}"
+               class="btn btn-outline-secondary">Cancel</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

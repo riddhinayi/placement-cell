@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block title %}Register | Placement Cell{% endblock %}
+{% block content %}
+<div class="row justify-content-center mt-4">
+  <div class="col-md-6">
+    <div class="card p-4">
+      <div class="text-center mb-4">
+        <i class="bi bi-person-plus-fill text-primary" style="font-size:2.5rem;"></i>
+        <h4 class="fw-bold mt-2">Create Account</h4>
+        <p class="text-muted">Join the placement portal</p>
+      </div>
+      <form method="POST">
+        {{ form.hidden_tag() }}
+        <div class="mb-3">
+          {{ form.name.label(class="form-label fw-semibold") }}
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-person"></i></span>
+            {{ form.name(class="form-control", placeholder="Your full name") }}
+          </div>
+          {% for e in form.name.errors %}
+            <small class="text-danger">{{ e }}</small>
+          {% endfor %}
+        </div>
+        <div class="mb-3">
+          {{ form.email.label(class="form-label fw-semibold") }}
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+            {{ form.email(class="form-control", placeholder="you@email.com") }}
+          </div>
+          {% for e in form.email.errors %}
+            <small class="text-danger">{{ e }}</small>
+          {% endfor %}
+        </div>
+        <div class="mb-3">
+          {{ form.role.label(class="form-label fw-semibold") }}
+          {{ form.role(class="form-select") }}
+        </div>
+        <div class="mb-3">
+          {{ form.password.label(class="form-label fw-semibold") }}
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-lock"></i></span>
+            {{ form.password(class="form-control", placeholder="Min 6 characters") }}
+          </div>
+        </div>
+        <div class="mb-4">
+          {{ form.confirm.label(class="form-label fw-semibold") }}
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+            {{ form.confirm(class="form-control", placeholder="Repeat password") }}
+          </div>
+          {% for e in form.confirm.errors %}
+            <small class="text-danger">{{ e }}</small>
+          {% endfor %}
+        </div>
+        {{ form.submit(class="btn btn-success w-100 py-2") }}
+      </form>
+      <hr/>
+      <p class="text-center mb-0 text-muted">
+        Already registered? <a href="{{ url_for('auth.login') }}">Login here</a>
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock %}

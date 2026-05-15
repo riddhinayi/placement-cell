@@ -1,0 +1,132 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2 class="fw-bold mb-4">Admin Dashboard</h2>
+
+<div class="row g-3 mb-4">
+  <div class="col-md-3">
+    <div class="card text-white bg-primary shadow-sm">
+      <div class="card-body text-center">
+        <h3 class="fw-bold">{{ stats.total_students }}</h3>
+        <p class="mb-0">Total Students</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card text-white bg-success shadow-sm">
+      <div class="card-body text-center">
+        <h3 class="fw-bold">{{ stats.total_placed }}</h3>
+        <p class="mb-0">Students Placed</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card text-white bg-warning shadow-sm">
+      <div class="card-body text-center">
+        <h3 class="fw-bold">{{ stats.total_companies }}</h3>
+        <p class="mb-0">Companies</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="card text-white bg-info shadow-sm">
+      <div class="card-body text-center">
+        <h3 class="fw-bold">{{ stats.total_drives }}</h3>
+        <p class="mb-0">Job Drives</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row g-3 mb-4">
+  <div class="col-md-4">
+    <div class="card border-danger shadow-sm">
+      <div class="card-body text-center">
+        <h4 class="text-danger fw-bold">{{ stats.pending_companies }}</h4>
+        <p class="mb-1">Pending Company Approvals</p>
+        <a href="{{ url_for('admin.companies') }}" class="btn btn-sm btn-outline-danger">Review</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card border-warning shadow-sm">
+      <div class="card-body text-center">
+        <h4 class="text-warning fw-bold">{{ stats.pending_drives }}</h4>
+        <p class="mb-1">Pending Drive Approvals</p>
+        <a href="{{ url_for('admin.drives') }}" class="btn btn-sm btn-outline-warning">Review</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card border-info shadow-sm">
+      <div class="card-body text-center">
+        <h4 class="text-info fw-bold">{{ stats.total_applications }}</h4>
+        <p class="mb-1">Total Applications</p>
+        <a href="{{ url_for('admin.applications') }}" class="btn btn-sm btn-outline-info">View All</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row g-3">
+  <div class="col-md-6">
+    <div class="card shadow-sm">
+      <div class="card-header fw-bold">Recent Job Drives</div>
+      <div class="card-body p-0">
+        <table class="table table-hover mb-0">
+          <thead class="table-light">
+            <tr><th>Title</th><th>Company</th><th>Status</th></tr>
+          </thead>
+          <tbody>
+            {% for drive in recent_drives %}
+            <tr>
+              <td>{{ drive.title }}</td>
+              <td>{{ drive.company.company_name }}</td>
+              <td>
+                {% if drive.is_approved %}
+                  <span class="badge bg-success">Approved</span>
+                {% else %}
+                  <span class="badge bg-warning text-dark">Pending</span>
+                {% endif %}
+              </td>
+            </tr>
+            {% else %}
+            <tr><td colspan="3" class="text-center text-muted">No drives yet</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card shadow-sm">
+      <div class="card-header fw-bold">Recent Applications</div>
+      <div class="card-body p-0">
+        <table class="table table-hover mb-0">
+          <thead class="table-light">
+            <tr><th>Student</th><th>Drive</th><th>Status</th></tr>
+          </thead>
+          <tbody>
+            {% for app in recent_applications %}
+            <tr>
+              <td>{{ app.student.user.name }}</td>
+              <td>{{ app.job_drive.title }}</td>
+              <td>
+                <span class="badge
+                  {% if app.status == 'selected' %}bg-success
+                  {% elif app.status == 'rejected' %}bg-danger
+                  {% elif app.status == 'shortlisted' %}bg-info
+                  {% else %}bg-secondary{% endif %}">
+                  {{ app.status }}
+                </span>
+              </td>
+            </tr>
+            {% else %}
+            <tr><td colspan="3" class="text-center text-muted">No applications yet</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

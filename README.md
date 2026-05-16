@@ -88,14 +88,15 @@ Dashboard & Visualization
 
 ## Installation Guide
 ---> Clone Repository
-     git clone https://github.com/your-username/placement-cell-management-system.git
----> Navigate to Project Folder
-     cd placement-cell-management-system
----> Create Virtual Environment
-     python -m venv venv
--->Activate Virtual Environment
-   Windows
-   venv\Scripts\activate
+     git clone https://github.com/your-username/placement-cell-management-system.git                   
+---> Navigate to Project Folder                                                                           
+     cd placement-cell-management-system                                                                                 
+---> Create Virtual Environment                                                                                              
+     python -m venv venv                                                                                    
+-->Activate Virtual Environment                                                                                         
+   Windows                                                                                                      
+   venv\Scripts\activate  
+   
    Mac/Linux
    source venv/bin/activate
 # Install Dependencies

@@ -87,7 +87,7 @@ Dashboard & Visualization
   Chart.js
 
 ## Installation Guide
----> Clone Repository
+---> Clone Repository                                                                                                                                     
      git clone https://github.com/your-username/placement-cell-management-system.git                   
 ---> Navigate to Project Folder                                                                           
      cd placement-cell-management-system                                                                                 
@@ -116,6 +116,8 @@ Placement-Cell-Management-System/
 ├── requirements.txt
 └── README.md
 
+Admin Dashboard
+<img width="1917" height="855" alt="image" src="https://github.com/user-attachments/assets/d7941139-aad2-4e93-9ed4-394c875806fd" />
 
 Author
 Riddhi Nayi

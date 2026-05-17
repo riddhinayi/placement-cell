@@ -118,8 +118,10 @@ Placement-Cell-Management-System/
 
 # Admin Dashboard
 <img width="1917" height="855" alt="image" src="https://github.com/user-attachments/assets/d7941139-aad2-4e93-9ed4-394c875806fd" />
+
 # Company Dashboard
 <img width="1901" height="862" alt="image" src="https://github.com/user-attachments/assets/c0249f94-3f97-4be0-9271-9c53e92d7c51" />
+
 # Student Dashboard
 <img width="1892" height="852" alt="image" src="https://github.com/user-attachments/assets/227b4a67-c73e-4e76-b3c8-0875602dbb60" />
 

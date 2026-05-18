@@ -35,21 +35,21 @@ Recruiters shortlist candidates and schedule interview rounds.
 Selected students are marked as placed and reports are generated automatically.
 
 ## Technology Stack
-Backend
+-----------Backend
   Python 3
   Flask
   SQLAlchemy
-Frontend
+-----------Frontend
    HTML5
    CSS3
   JavaScript
   Jinja2 Templates
-Database
+-----------Database
   SQLite
-Authentication & Forms
+------------Authentication & Forms
   Flask-Login
   Flask-WTF
-Dashboard & Visualization
+-------------Dashboard & Visualization
   Chart.js
 
 ## Installation Guide

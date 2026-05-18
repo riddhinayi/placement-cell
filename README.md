@@ -6,40 +6,6 @@ The Placement Cell Management System simplifies the traditional placement proces
                          
 This project is designed for colleges and universities to manage placement activities, maintain student records, and streamline recruitment procedures through a secure and scalable web application.
 
-# Key Features
--- Authentication System
-Secure Login & Registration
-Role-Based Access Control
-Session Management
-
--- Student Module
-Student Profile Management
-Resume Upload
-Skills & Academic Details
-Placement Drive Applications
-Application Status Tracking
-
--- Recruiter Module
-Post Placement Drives
-Define Eligibility Criteria
-View Applicants
-Shortlist Candidates
-Update Interview Results
-
--- Admin Module
-Manage Students & Recruiters
-Approve Placement Drives
-Monitor Placement Activities
-Generate Reports & Analytics
-Dashboard Management
-
---Additional Features
-Interview Scheduling
-Notifications & Alerts
-Placement Statistics
-CSV/PDF Export Reports
-Responsive User Interface
-
 ## System Workflow
 
 # Step 1 — Student Registration

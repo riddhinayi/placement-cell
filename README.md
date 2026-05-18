@@ -3,7 +3,7 @@ A full-stack web application developed using Python and Flask to automate and ma
 
 # Project Overview
 The Placement Cell Management System simplifies the traditional placement process by digitizing recruitment workflows within educational institutions. The system provides role-based access for Admins, Students, and Recruiters, ensuring smooth communication and efficient placement operations.
-
+                         
 This project is designed for colleges and universities to manage placement activities, maintain student records, and streamline recruitment procedures through a secure and scalable web application.
 
 # Key Features
